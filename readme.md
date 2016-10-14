@@ -10,10 +10,6 @@ It uses slack's slash command system, and is simply a php script that takes a fe
 
 ## What more do I need to know?
 
-I've no idea. Wait, the format for the cards.txt file. I guess it's public knowledge, so I could legally upload it, but I'd rather not be in a gray zone, so I'll just not.
-
-cards.txt is a simple list of cards on the format
-
-`<multiverse id>\t<set code>\t<card name>`
+I've no idea.
 
 If you're really going to use this and you encounter any problems, feel free to bug me here.
