@@ -66,14 +66,18 @@ class Cards {
 			$this->cards[] = array(
 					"id" => $matches[1],
 					"set" => $matches[2],
-					"name" => str_replace(' ', '+', $matches[3]),
+					"name" => $matches[3],
+					"image_url" => $this->cleanup_name($matches[3]),
 					"prefix" => $prefix[1]
 					);
 		}
 	}
 	
+	private function cleanup_name($name) {
+		return preg_replace('/[!"&\'(),-.:?_\\s]+/', '+', $name);
+	}
 	
-	function compare_card($name, $card, $key, &$found, &$diff) {
+	private function compare_card($name, $card, $key, &$found, &$diff) {
 		$tmpDiff = levenshtein(strtolower($card[$key]), $name);
 		
 		if ($tmpDiff < $diff) {

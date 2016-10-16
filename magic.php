@@ -25,8 +25,8 @@ if (count($found) > 0) {
                 global $settings;
                 return array(
                     "text" => "http://gatherer.wizards.com/Pages/Card/Details.aspx?multiverseid={$card['id']}",
-                    "fallback" => "{$settings['baseUrl']}{$card['set']}/{$card['name']}{$settings['suffix']}",
-                    "image_url" => "{$settings['baseUrl']}{$card['set']}/{$card['name']}{$settings['suffix']}");
+                    "fallback" => "{$settings['baseUrl']}{$card['set']}/{$card['image_url']}{$settings['suffix']}",
+                    "image_url" => "{$settings['baseUrl']}{$card['set']}/{$card['image_url']}{$settings['suffix']}");
                     }, $found)
         );
     echo json_encode($json);
