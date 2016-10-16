@@ -20,8 +20,9 @@ class Cards {
 	}
 	
 	public function find_card($name) {
-		if (preg_match("/^\s*(.*\S)\s*\[(.*)\]\s*$/", $name, $parts)) {
+		if (preg_match("/^\s*(.*\S)\s*\[([^,]*)(\s*,\s*(\d+))?\]\s*$/", $name, $parts)) {
 			$setCode = $parts[2];
+			$variant = $parts[4];
 			$name = $parts[1];
 		}
 
@@ -30,6 +31,7 @@ class Cards {
 		$diff = $this->maxDiff;
 		$found = array();
 		foreach ($this->cards as $card) {
+			$card['variant'] = $variant;
 			$this->compare_card($name, $card, 'name', $found, $diff);
 			$this->compare_card($name, $card, 'prefix', $found, $diff);
 		}

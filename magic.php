@@ -24,9 +24,9 @@ if (count($found) > 0) {
         "attachments" => array_map(function($card) {
                 global $settings;
                 return array(
-                    "text" => "http://gatherer.wizards.com/Pages/Card/Details.aspx?multiverseid={$card['id']}",
-                    "fallback" => "{$settings['baseUrl']}{$card['set']}/{$card['image_url']}{$settings['suffix']}",
-                    "image_url" => "{$settings['baseUrl']}{$card['set']}/{$card['image_url']}{$settings['suffix']}");
+                    "text"      => "http://gatherer.wizards.com/Pages/Card/Details.aspx?multiverseid={$card['id']}",
+                    "fallback"  => "{$settings['baseUrl']}{$card['set']}/{$card['image_url']}{$card['variant']}{$settings['suffix']}",
+                    "image_url" => "{$settings['baseUrl']}{$card['set']}/{$card['image_url']}{$card['variant']}{$settings['suffix']}");
                     }, $found)
         );
     echo json_encode($json);
