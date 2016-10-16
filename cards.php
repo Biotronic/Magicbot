@@ -74,7 +74,7 @@ class Cards {
 	}
 	
 	private function cleanup_name($name) {
-		return preg_replace('/[!"&\'(),-.:?_\\s]+/', '+', $name);
+		return trim(preg_replace('/[!"&\'(),-.:?_\\s]+/', '+', $name), ' +');
 	}
 	
 	private function compare_card($name, $card, $key, &$found, &$diff) {
