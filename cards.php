@@ -20,7 +20,7 @@ class Cards {
 	}
 	
 	public function find_card($name) {
-		if (preg_match("/^\s*(.*\S)\s*\[([^,]*)(\s*,\s*(\d+))?\]\s*$/", $name, $parts)) {
+		if (preg_match("/^\s*(.*\S)\s*\[\s*([^,]*)(\s*,\s*(\d+))?\]\s*$/", $name, $parts)) {
 			$setCode = $parts[2];
 			$variant = $parts[4];
 			$name = $parts[1];
@@ -76,7 +76,10 @@ class Cards {
 	}
 	
 	private function cleanup_name($name) {
-		return trim(preg_replace('/[!"&\'(),-.:?_\\s]+/', '+', $name), ' +');
+		$name = preg_replace('/\"|:|\\?|®/', "", $name);
+		$name = strtr($name, "àáâéíöúû:_ \\", "aaaeiouu++++++++++++++++++++++++++++++++++++");
+		$name = preg_replace("/\\++/", "+", $name);
+		return $name;
 	}
 	
 	private function compare_card($name, $card, $key, &$found, &$diff) {
